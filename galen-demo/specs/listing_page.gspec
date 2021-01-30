@@ -1,0 +1,57 @@
+# This covers Quandoo Listing Page Visual Testing
+========================================
+@objects
+    listing_header       xpath         //div[@data-qa='listing-header']
+    breadcrumbs          xpath         //div[@data-qa='breadcrumbs']
+    language_selector    xpath         //div[@data-qa='lang-selector-toggle']
+    log_in               xpath         //div[@data-qa='header-login']
+    filter_nearby        xpath         //button[@data-qa='filter-button-nearby']
+    filter_top_rated     xpath         //button[@data-qa='filter-button-top-rated']
+    footer_trademark_section xpath     //div[@data-qa='footer-trademark-section']
+    footer_legal_section  xpath        //div[@data-qa='footer-legal-section']
+    search_bar              xpath      //input[@data-qa='search-bar-dining-input']
+  # button_search_find_header xpath   //button[@data-qa='button-search-find-header']
+
+
+
+========================================
+# Validation on desktop resolutions
+@on desktop
+========================================
+
+= Header section =
+    breadcrumbs:
+      height ~ 40px
+      width 1279 to 1380px
+
+    listing_header:
+      height 442 to 446px
+      width 878px
+
+    language_selector:
+      right-of log_in 1 to 42px
+      css font-size is "14px"
+      css font-family matches ".*Roboto.*, .*Helvetica.*,.*Arial.*,.*sans-serif.*"
+
+= Filter section =
+    filter_nearby:
+      text is "${i18n.nearby.filter}"
+      left-of filter_top_rated -268 to 182px
+      height 40 to 51px
+      width 81 to 110px
+
+= Footer section =
+    footer_trademark_section:
+       below footer_legal_section 40px
+       height 74px
+       width 1219px
+
+= Search bar =
+    search_bar:
+      #text is "${i18n.search.bar}"
+      height 40px
+      width 313 to 320px
+
+
+
+

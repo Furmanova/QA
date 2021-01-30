@@ -10,7 +10,8 @@
     footer_trademark_section xpath     //div[@data-qa='footer-trademark-section']
     footer_legal_section  xpath        //div[@data-qa='footer-legal-section']
     search_bar              xpath      //input[@data-qa='search-bar-dining-input']
-  # button_search_find_header xpath   //button[@data-qa='button-search-find-header']
+    button_search_find       xpath   //button[@data-qa='button-search-find-header']
+
 
 
 
@@ -51,6 +52,13 @@
       #text is "${i18n.search.bar}"
       height 40px
       width 313 to 320px
+
+= Button_search_find =
+    button_search_find:
+     text is "${i18n.find.button}"
+     height 40px
+     width 96px
+
 
 
 

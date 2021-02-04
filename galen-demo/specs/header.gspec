@@ -1,0 +1,21 @@
+========================================
+@objects
+    header_static            xpath         //div[@data-qa='header-static']
+
+
+
+
+
+
+
+========================================
+
+# Validation on desktop resolutions
+@on desktop
+========================================
+
+= Header section =
+    header_static:
+        height ~ 40px
+        width 1279 to 1380px
+

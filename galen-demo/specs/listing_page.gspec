@@ -1,16 +1,19 @@
 # This covers Quandoo Listing Page Visual Testing
 ========================================
 @objects
-    listing_header       xpath         //div[@data-qa='listing-header']
-    breadcrumbs          xpath         //div[@data-qa='breadcrumbs']
-    language_selector    xpath         //div[@data-qa='lang-selector-toggle']
-    log_in               xpath         //div[@data-qa='header-login']
-    filter_nearby        xpath         //button[@data-qa='filter-button-nearby']
-    filter_top_rated     xpath         //button[@data-qa='filter-button-top-rated']
-    footer_trademark_section xpath     //div[@data-qa='footer-trademark-section']
-    footer_legal_section  xpath        //div[@data-qa='footer-legal-section']
-    search_bar_dining xpath      //input[@data-qa='search-bar-dining-input']
-    button_search_find       xpath   //button[@data-qa='button-search-find-header']
+    listing_header              xpath         //div[@data-qa='listing-header']
+    breadcrumbs                 xpath         //div[@data-qa='breadcrumbs']
+    language_selector           xpath         //div[@data-qa='lang-selector-toggle']
+    log_in                      xpath         //div[@data-qa='header-login']
+    filter_nearby               xpath         //button[@data-qa='filter-button-nearby']
+    filter_top_rated            xpath        //button[@data-qa='filter-button-top-rated']
+    footer_trademark_section    xpath        //div[@data-qa='footer-trademark-section']
+    footer_legal_section        xpath        //div[@data-qa='footer-legal-section']
+    search_bar_dining           xpath        //input[@data-qa='search-bar-dining-input']
+    button_search_find          xpath        //button[@data-qa='button-search-find-header']
+    copyright_text              css           .hyss0n-6
+
+
 
 
 
@@ -21,6 +24,7 @@
 ========================================
 
 = Header section =
+
     breadcrumbs:
       height ~ 40px
       width 1279 to 1380px
@@ -46,6 +50,10 @@
        below footer_legal_section 40px
        height 74px
        width 1219px
+    copyright_text:
+       text is  "${i18n.copyright.text}"
+
+
 
 = Search bar dining =
     search_bar_dining:
@@ -57,7 +65,7 @@
     button_search_find:
      text is "${i18n.find.button}"
      height 40px
-     width 96px
+     width 96 to 101px
 
 
 

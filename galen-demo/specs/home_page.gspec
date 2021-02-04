@@ -1,0 +1,30 @@
+========================================
+@objects
+    top_cities-*             xpath         //*[@class='sc-1uonb2l-0 ivaRxY']
+    top_cities_names-*       xpath         //*[@class='sc-1m63ysl-1 iDVtoH']
+
+
+
+@script
+    data = ["Berlin", "Köln", "Hamburg", "München", "Düsseldorf", "Frankfurt", "Bonn", "Hannover", "Essen", "Dortmund"]
+
+
+
+
+========================================
+
+# Validation on desktop resolutions
+@on desktop
+========================================
+
+= Cities section =
+    @for [1 - 10] as index
+        top_cities-${index}:
+            height ~ 135px
+            width ~ 448px
+
+
+    @forEach [top_cities_names-*] as city, index as i
+        ${city}:
+            text is "Restaurants in ${data[i-1]}"
+

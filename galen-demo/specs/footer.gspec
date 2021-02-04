@@ -1,0 +1,21 @@
+========================================
+@objects
+    footer_sections_all            xpath         //div[@data-qa='footer-sections-all']
+
+
+
+
+
+
+
+========================================
+
+# Validation on desktop resolutions
+@on desktop
+========================================
+
+= Footer section =
+    footer_sections_all:
+        height ~ 40px
+        width 1279 to 1380px
+

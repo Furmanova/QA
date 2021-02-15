@@ -20,6 +20,12 @@ public class CuisinePage {
     @FindBy(xpath = "//div[@data-qa='results-count']")
     SelenideElement resultsCount;
 
+    private static final By elementList = By.xpath("//*[@data-qa=\"merchant-card-wrapper\"]");
+
+    public List<SelenideElement> elementList() {
+        return $$(elementList);
+    }
+
 
     public void acceptCookies() {
         okBtnCookies.click();

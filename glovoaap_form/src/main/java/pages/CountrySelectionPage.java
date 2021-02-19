@@ -1,35 +1,90 @@
 package pages;
 
 
-import org.openqa.selenium.By;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.support.FindBy;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.page;
 
 public class CountrySelectionPage {
-    private static final By COUNTRY_FIND = By.xpath("//p[contains(.,'Страна')]");
-    private static final By COUNTRY_OPEN = By.xpath("//span[contains(.,'Украина')]");
-    private static final By FIRST_NAME = By.xpath("css=.item-form:nth-child(5) > input");
-    private static final By LAST_NAME = By.xpath("//input[@name='name'])[2]");
-    private static final By EMAIL = By.id("email");
-    private static final By SUBMIT = By.id("form_submit");
-    public void countrySelection(String country) {
-        $(COUNTRY_FIND).click();
-        $(COUNTRY_OPEN).find(country);
+    @FindBy(id = "onetrust-accept-btn-handler")
+    SelenideElement okBtnCookies;
+    @FindBy(xpath = "//p[contains(.,'Страна')]")
+    SelenideElement dropdownToggleOpen;
+    @FindBy(id = "countrySpan")
+    ElementsCollection countryList;
+    @FindBy(xpath = "(//input[@name='name'])[3]")
+    SelenideElement emailSelect;
+    @FindBy(xpath = "//div[2]/input")
+    SelenideElement firstName;
+    @FindBy(xpath = "//div[3]/input")
+    SelenideElement lastName;
+    @FindBy(css = ".multiselect__select")
+    SelenideElement dropdownCodeCountryTel;
+    @FindBy(css = ".multiselect__option")
+    ElementsCollection listCodeCountry;
+    @FindBy(id = "phone")
+    SelenideElement telInput;
+    @FindBy(xpath = "//div[6]/div/p")
+    SelenideElement dropdownType;
+    @FindBy(xpath = "//input[@name='numberBranches']")
+    SelenideElement inputNumberBranches;
+    @FindBy(css = ".label-icon")
+    SelenideElement checkBox;
+    @FindBy(css = ".active > li")
+    ElementsCollection listOfTypes;
+    @FindBy(css = ".btn-primary")
+    SelenideElement nextButton;
 
+    public void acceptCookies() {
+        okBtnCookies.click();
     }
-    public String firstName(String firstName) {
-        $(FIRST_NAME).name();
-        return firstName;
+
+    public void selectDropdownCodeCountryTel(String codeCountry
+    ) {
+        dropdownCodeCountryTel.click();
+        listCodeCountry.findBy(text(codeCountry)).click();
     }
-    public String lastName(String lastName) {
-        $(LAST_NAME).name();
-        return faker.name().lastName();
+
+    public void countrySelection(String country) {
+        dropdownToggleOpen.click();
+        countryList.findBy(text(country)).click();
     }
-    public String inputEmail(String email) {
-        $(EMAIL).setValue(email);
-       
-        return email;
+
+    public void firstName(String name) {
+        firstName.setValue(name);
+    }
+
+    public void lastName(String name) {
+        lastName.setValue(name);
+    }
+
+    public void inputEmail(String email) {
+        emailSelect.setValue(email);
+    }
+
+    public void fillTelInput(String tel) {
+        telInput.setValue(tel);
+    }
+
+    public void selectDropdownType(String type) {
+        dropdownType.click();
+        listOfTypes.findBy(text(type)).click();
+    }
+
+    public void fillNumberBtanches(String number) {
+        inputNumberBranches.setValue(number);
+    }
+
+    public void fillCheckBox() {
+        checkBox.click();
+    }
+
+    public NextRegistrationPage clickNextButton() {
+        nextButton.click();
+        return page(NextRegistrationPage.class);
     }
 
 

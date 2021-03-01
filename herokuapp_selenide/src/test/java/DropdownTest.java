@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pages.DropdownPage;
 
 import static com.codeborne.selenide.Condition.text;

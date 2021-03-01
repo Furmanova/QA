@@ -1,11 +1,16 @@
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeEach;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import pages.HorizontalPage;
 
+
+import java.net.MalformedURLException;
 
 import static com.codeborne.selenide.Selenide.open;
 import static pages.Commons.BASE_URL;
 
-public class HorizontalPageTest {
+public class HorizontalPageTest extends BaseTest {
 
     @Test
     public void sliderTest(){
@@ -13,5 +18,4 @@ public class HorizontalPageTest {
                 HorizontalPage.class);
         horizontalPage.moveSlider ("2" );
     }
-
 }

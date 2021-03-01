@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pages.HoversPage;
 
 import static com.codeborne.selenide.Selenide.open;

@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Herokuapp_selenide" verbose="1" parallel="tests" thread-count="2">
+    <test name="Regression chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="HorizontalPageTest" />
+            <class name="SliderTest"/>
+        </classes>
+    </test>
+    <test name="Regression ff">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="HorizontalPageTest" />
+            <class name="SliderTest"/>
+        </classes>
+    </test>
+<!--    <test name="Regression ie">-->
+<!--        <parameter name="browser" value="internet explorer"/>-->
+<!--        <classes>-->
+<!--            <class name="HorizontalPageTest" />-->
+<!--            <class name="SliderTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>

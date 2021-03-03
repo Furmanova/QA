@@ -4,14 +4,18 @@ Feature: Sconto Products Feature
 
   Scenario: Successful Products
     Given I am on the Homepage
-    When I click on the Sofa
-    Then I click on the wish list icon
+    When I click on the Sofas
+    Then I should see catalog page with Sofas
 
-    When I click anmeldun
-    Then I log in
+    When I click on sofa's favourite icon
+    Then I should see dialog box with anmelden button
 
-    When I click merkliste icon
-    Then I text check
+    When I click anmelden button
+    Then I should see login page
+
+    When I'm logging in
+    And I click merkliste icon
+    Then I should see Palina sofa
 
 
 

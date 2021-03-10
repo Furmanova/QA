@@ -8,7 +8,7 @@ Feature: Moemax  Filter marke
 
 
     Examples:
-      | make  |  | quantity   |
-      | AEG   |  | 46 Artikel |
-      | Amica |  | 16 Artikel |
+      | make  |   quantity   |
+      | AEG   |   46 Artikel |
+      | Amica |   16 Artikel |
 

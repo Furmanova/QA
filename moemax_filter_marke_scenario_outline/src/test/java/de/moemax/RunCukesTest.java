@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
         glue = "de.moemax",
         strict = true
 
+
 )
 public class RunCukesTest {
 }

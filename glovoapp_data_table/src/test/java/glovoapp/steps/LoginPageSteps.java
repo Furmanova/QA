@@ -1,5 +1,6 @@
 package glovoapp.steps;
 
+import com.github.javafaker.Faker;
 import glovoapp.LoginPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.docstring.DocString;
@@ -13,8 +14,8 @@ import static com.codeborne.selenide.Selenide.page;
 
 
 public class LoginPageSteps {
-
     LoginPage loginPage;
+    Faker faker = new Faker();
 
     @When("I fill input data in the login form:")
     public void inputLoginForm(DataTable login) {
@@ -22,7 +23,8 @@ public class LoginPageSteps {
         List<Map<String, String>> signForms = login.asMaps();
         for (Map<String, String> form : signForms) {
             String userName = form.get("Name");
-            String email = form.get("Email");
+            String email = faker.internet().emailAddress();
+            // String email = form.get("Email");
             String password = form.get("Password");
             loginPage.register(userName, email, password);
         }
@@ -30,11 +32,13 @@ public class LoginPageSteps {
 
     @When("I click Button signup")
     public void clickButtonSignup() {
+
         loginPage.clickButtonSignup();
     }
 
     @When("I click agreement Checkbox")
     public void clickChekbox() {
+
         loginPage.clickCheckbox();
     }
 
@@ -48,8 +52,6 @@ public class LoginPageSteps {
     public void message(DocString message) {
         String expectedMessage = message.getContent();
         loginPage.message(expectedMessage);
-
-
 
 
     }

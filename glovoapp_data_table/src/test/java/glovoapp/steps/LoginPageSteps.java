@@ -1,5 +1,6 @@
 package glovoapp.steps;
 
+import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import glovoapp.LoginPage;
 import io.cucumber.datatable.DataTable;
@@ -10,6 +11,7 @@ import io.cucumber.java.en.When;
 import java.util.List;
 import java.util.Map;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.page;
 
 
@@ -34,8 +36,9 @@ public class LoginPageSteps {
     public void clickButtonSignup() {
         loginPage.clickButtonSignup();
     }
+
     @Then("I see Privacy page")
-    public void continueAndRegisterButton(){
+    public void continueAndRegisterButton() {
         loginPage.setPrivacyPage().exists();
 
     }
@@ -49,7 +52,6 @@ public class LoginPageSteps {
     @When("I click continue and register Button")
     public void clickButtonContinueAndRegister() {
         loginPage.buttonContinueAndRegister();
-
     }
 
     @Then("I should see message:")
@@ -57,9 +59,15 @@ public class LoginPageSteps {
         String expectedMessage = message.getContent();
         loginPage.message(expectedMessage);
     }
+
     @When("I click No, thanks Button")
-    public void clickButtonNoThanks(){
+    public void clickButtonNoThanks() {
         loginPage.setClickNoThanksButton();
+    }
+
+    @Then("I see Personal page")
+    public void personalPage() {
+        loginPage.personalPage().shouldHave(Condition.exist);
 
     }
 

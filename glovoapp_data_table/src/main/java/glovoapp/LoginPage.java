@@ -20,6 +20,7 @@ public class LoginPage {
     private static final By clickNoThanksButton = By.xpath("//*[contains(text(),'No, thanks')]");
     private static final By validMessage = By.xpath("//*[contains(text(),'Enter your mobile phone number to enable')]");
     private static final By privacyPage = By.xpath("//h1[contains(text(),'Privacy')]");
+    private static final By personalPageUsername = By.xpath("//span[@class=\"dropdown_button el-dropdown-selfdefine\"]");
 
     public void register(String name, String email, String password) {
         $(inputName).click();
@@ -33,7 +34,8 @@ public class LoginPage {
     public void clickButtonSignup() {
         $(clickButtonSignup).shouldHave(Condition.exist).click();
     }
-    public SelenideElement setPrivacyPage(){
+
+    public SelenideElement setPrivacyPage() {
         return $(privacyPage);
     }
 
@@ -52,5 +54,9 @@ public class LoginPage {
     public void setClickNoThanksButton() {
         $(clickNoThanksButton).click();
         Configuration.holdBrowserOpen = true;
+    }
+
+    public SelenideElement personalPage() {
+        return $(personalPageUsername);
     }
 }

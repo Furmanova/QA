@@ -11,9 +11,10 @@ Feature: Glovoapp login
     And I click continue and register Button
     Then I should see message:
     """
-        Enter your mobile phone number to enable
+   Enter your mobile phone number to enable
     """
-    And I click No, thanks Button
+    When I click No, thanks Button
+    Then I see Personal page
 
 
 

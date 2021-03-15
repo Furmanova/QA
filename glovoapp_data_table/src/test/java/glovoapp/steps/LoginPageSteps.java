@@ -32,19 +32,23 @@ public class LoginPageSteps {
 
     @When("I click Button signup")
     public void clickButtonSignup() {
-
         loginPage.clickButtonSignup();
+    }
+    @Then("I see Privacy page")
+    public void continueAndRegisterButton(){
+        loginPage.setPrivacyPage().exists();
+
     }
 
     @When("I click agreement Checkbox")
     public void clickChekbox() {
-
         loginPage.clickCheckbox();
     }
 
+
     @When("I click continue and register Button")
     public void clickButtonContinueAndRegister() {
-        loginPage.clickButtonContinueAndRegister();
+        loginPage.buttonContinueAndRegister();
 
     }
 
@@ -52,7 +56,10 @@ public class LoginPageSteps {
     public void message(DocString message) {
         String expectedMessage = message.getContent();
         loginPage.message(expectedMessage);
-
+    }
+    @When("I click No, thanks Button")
+    public void clickButtonNoThanks(){
+        loginPage.setClickNoThanksButton();
 
     }
 

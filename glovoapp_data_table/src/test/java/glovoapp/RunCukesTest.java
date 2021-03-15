@@ -9,8 +9,6 @@ import org.junit.runner.RunWith;
         plugin = {"json:target/cucumber-report.json", "pretty"},
         glue = "glovoapp",
         strict = true
-
-
 )
 public class RunCukesTest {
 }

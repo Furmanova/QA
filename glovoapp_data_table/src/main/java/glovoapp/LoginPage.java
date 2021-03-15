@@ -16,9 +16,10 @@ public class LoginPage {
     private static final By clickButtonSignup = By.xpath("//button[@data-test-id='signup-submit']");
     private static final By clickCheckbox = By.cssSelector(".privacy__term:nth-child(2) .el-checkbox__inner");
     private static final By clickButtonContinueAndRegister = By.xpath("//button[@data-test-id=\"submit-terms-conditions\"]");
-  //  private static final By errorMessage = By.xpath("//span[contains(text(),'An account with this email address already exists')]");
-
+    //  private static final By errorMessage = By.xpath("//span[contains(text(),'An account with this email address already exists')]");
+    private static final By clickNoThanksButton = By.xpath("//*[contains(text(),'No, thanks')]");
     private static final By validMessage = By.xpath("//*[contains(text(),'Enter your mobile phone number to enable')]");
+    private static final By privacyPage = By.xpath("//h1[contains(text(),'Privacy')]");
 
     public void register(String name, String email, String password) {
         $(inputName).click();
@@ -32,18 +33,24 @@ public class LoginPage {
     public void clickButtonSignup() {
         $(clickButtonSignup).shouldHave(Condition.exist).click();
     }
+    public SelenideElement setPrivacyPage(){
+        return $(privacyPage);
+    }
 
     public void clickCheckbox() {
         $(clickCheckbox).click();
     }
 
-    public void clickButtonContinueAndRegister() {
+    public void buttonContinueAndRegister() {
         $(clickButtonContinueAndRegister).shouldHave(Condition.exist).click();
-
     }
 
-    public void message(String message)  {
-           $(validMessage).shouldHave(Condition.text(message));
+    public void message(String message) {
+        $(validMessage).shouldHave(Condition.text(message));
+    }
+
+    public void setClickNoThanksButton() {
+        $(clickNoThanksButton).click();
         Configuration.holdBrowserOpen = true;
     }
 }

@@ -6,13 +6,16 @@ Feature: Glovoapp login
       | Name | Email          | Password |
       | olga | a12s@gmail.com | 12345678 |
     And I click Button signup
+    Then I see Privacy page
     When I click agreement Checkbox
     And I click continue and register Button
     Then I should see message:
+    """
+        Enter your mobile phone number to enable
+    """
+    And I click No, thanks Button
 
-    """
-     Enter your mobile phone number to enable
-    """
+
 
 
 

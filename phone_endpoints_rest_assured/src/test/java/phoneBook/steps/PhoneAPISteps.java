@@ -22,6 +22,7 @@ public class PhoneAPISteps extends APITestsHelper {
         request = RestAssured.given().header("Access-Token", token);
         request.header("Content-Type", "application/json");
         response = request.body(createRandomPhone()).post(phoneAPIURL);
+        response.prettyPrint();
     }
 
     @Then("I see status code {}")
@@ -34,6 +35,7 @@ public class PhoneAPISteps extends APITestsHelper {
     public void getRequestContact() {
         request = RestAssured.given().header("Access-Token", token);
         response = request.get(phoneAPIURL);
+        response.prettyPrint();
     }
 }
 

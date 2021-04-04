@@ -13,7 +13,5 @@ public class ProductCategoryPage {
     }
     public SelenideElement receiverHighestPrice() {
         return selectedHighestPrice;
-
-
     }
 }

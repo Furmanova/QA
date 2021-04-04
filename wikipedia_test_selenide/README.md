@@ -2,11 +2,7 @@
 
 This is the web test automation project for testing www.wikipedia.com. website. It was built using Java 11, Selenium 3.141.59, Selenide frameworks [http://selenide.org/index.html ].
 
-Project has parallel run of tests
-  
-Running tests from:
-
-`src/test/resources/testng.xml`
+Project runs tests with Chrome and Firefox browsers as well
 
 ## Prerequisites Software/Tools
 
@@ -25,6 +21,9 @@ Running tests from:
 
 `mvn test -Dbrowser=Firefox`
 
+To run test call maven with this file:
+
+`src/test/resources/testng.xml`
 
 
 ## Contributors

@@ -19,7 +19,7 @@ Running tests from:
 
 ## Installation/Running Tests
 
-`git clone https://github.com/Furmanova/QA.git
+`git clone https://github.com/Furmanova/QA/tree/main/wikipedia_test_selenide
 
 `cd wikipedia_test_selenide/`
 

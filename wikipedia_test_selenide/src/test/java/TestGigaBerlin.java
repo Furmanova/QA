@@ -1,33 +1,35 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.GigaBerlinPage;
 import pages.HomePage;
+import pages.WikipediaPage;
 
 import static com.codeborne.selenide.Selenide.open;
-import static pages.BasePage.BASE_URL;
+import static pages.Commons.GOOGLE_URL;
 
-public class TestGigaBerlin extends BaseTest{
+public class TestGigaBerlin extends BaseTest {
     HomePage homePage;
     GigaBerlinPage gigaBerlinPage;
-    @BeforeMethod
-    public void setUp() {
-        homePage = open(BASE_URL, HomePage.class);
-        gigaBerlinPage = new GigaBerlinPage();
-    }
-
+    WikipediaPage wikipediaPage;
 
     @Test
     public void searchTest() {
-        homePage.searchClick("Giga Berlin");
+        homePage = open(GOOGLE_URL, HomePage.class);
+        wikipediaPage = new WikipediaPage();
+        gigaBerlinPage = new GigaBerlinPage();
+
+        homePage.setCookieGoogle();
+        homePage.searchGoogle().click();
+        homePage.searchGoogle().setValue("wikipedia.org").pressEnter();
+        homePage.clickWikipedia();
+
+        wikipediaPage.searchClick("Giga Berlin");
+
         gigaBerlinPage.logistics().shouldBe(Condition.text("Logistics"));
         gigaBerlinPage.siteConcerns().shouldBe(Condition.text("Site Concerns"));
-        gigaBerlinPage.checkGoogleMaps().click();
+        gigaBerlinPage.checkGoogleMaps();
     }
 
     @AfterMethod

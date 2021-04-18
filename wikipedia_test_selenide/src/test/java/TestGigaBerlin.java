@@ -31,9 +31,4 @@ public class TestGigaBerlin extends BaseTest {
         gigaBerlinPage.siteConcerns().shouldBe(Condition.text("Site Concerns"));
         gigaBerlinPage.checkGoogleMaps();
     }
-
-    @AfterMethod
-    public void tearDown() {
-        Configuration.holdBrowserOpen = true;
-    }
 }

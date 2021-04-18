@@ -1,43 +1,42 @@
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
-
-import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class BaseTest {
 
     @BeforeClass
     @Parameters({"browser"})
     public void setUpClass(String browser) {
-
-        RemoteWebDriver driver;
+        DesiredCapabilities capabilities;
         if (browser.equals("chrome")) {
-            driver = getChromeDriver();
+            capabilities = getChromeCapabilities();
         } else {
-            driver = getFirefoxDriver();
+            capabilities = getFirefoxCapabilities();
         }
-        setWebDriver(driver);
+        Configuration.browserCapabilities = capabilities;
     }
 
-    private RemoteWebDriver getFirefoxDriver() {
+    private DesiredCapabilities getFirefoxCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("intl.accept_languages", "en-GB");
         FirefoxOptions options = new FirefoxOptions();
         options.setProfile(profile);
-        return new FirefoxDriver(options);
+        capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
+        return capabilities;
     }
 
-    private RemoteWebDriver getChromeDriver() {
+    private DesiredCapabilities getChromeCapabilities() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--lang=en");
-        return new ChromeDriver(options);
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        return capabilities;
     }
 
     @BeforeTest

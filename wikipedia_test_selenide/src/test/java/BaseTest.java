@@ -6,12 +6,24 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
+import pages.GigaBerlinPage;
+import pages.HomePage;
+import pages.WikipediaPage;
 
 public class BaseTest {
-
-    @BeforeClass
+    HomePage homePage;
+    GigaBerlinPage gigaBerlinPage;
+    WikipediaPage wikipediaPage;
+    //    @BeforeClass
+//    @Parameters({"browser"})
+//    public void setUpClass(String browser) {
+//
+//    }
+    @BeforeTest
     @Parameters({"browser"})
-    public void setUpClass(String browser) {
+    public void setupBrowser(String browser) {
+        Configuration.browser = browser;
+
         DesiredCapabilities capabilities;
         if (browser.equals("chrome")) {
             capabilities = getChromeCapabilities();
@@ -19,6 +31,7 @@ public class BaseTest {
             capabilities = getFirefoxCapabilities();
         }
         Configuration.browserCapabilities = capabilities;
+
     }
 
     private DesiredCapabilities getFirefoxCapabilities() {
@@ -30,19 +43,13 @@ public class BaseTest {
         capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
         return capabilities;
     }
-
+/** метод уствнавливает английский язык в хром браузере и возвращает опции браузера */
     private DesiredCapabilities getChromeCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--lang=en");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         return capabilities;
-    }
-
-    @BeforeTest
-    @Parameters({"browser"})
-    public void openBrowser(String browser) {
-        Configuration.browser = browser;
     }
 
 
